@@ -1,0 +1,97 @@
+/* Trigex.net CSS */
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #232323;
+    margin: 0;
+    color: white;
+    line-height: 1.4;
+}
+
+#container {
+
+}
+
+#header {
+    background-color: steelblue;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.slogan {
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    font-weight: normal;
+    line-height: 1.1;
+}
+
+.header-text {
+    color: white;
+    font-weight: 700;
+    font-size: 40px;
+    text-align: center;
+    line-height: 1.1;
+}
+
+#nav-bar {
+    height: 20%;
+    background-color: white;
+    text-align: center;
+}
+
+#nav-bar a:link  {
+    color: steelblue;
+    text-transform: uppercase;
+    height: 100%;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: inherit;
+    padding: 20px;
+}
+
+#nav-bar a:hover  {
+    color: #2b506e;
+}
+
+a:visited {
+    color: steelblue;
+}
+
+a:link {
+    text-decoration: none;
+    color: steelblue;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.block-center {
+    display: block;
+    margin: 0 auto;
+}
+
+img {
+    padding-top: 10px;
+    width: 30%;
+}
+
+.big-p {
+    font-size: 18px;
+    padding: 0 10px;
+}
+
+.description {
+    width: 50%;
+}
+
+.project {
+    background: #424040;
+    margin: 10px auto;
+    padding: 10px;
+    width: 50%;
+    display: block;
+}
