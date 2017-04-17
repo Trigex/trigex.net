@@ -34,6 +34,11 @@ app.get("/blog", function(req, res){
     res.render("blog");
 });
 
+// Admin page
+app.get("/admin", function(req, res){
+    res.render("admin");
+});
+
 // Start application
 app.listen(8080, "127.0.0.1", function(){
     console.log("Listening on 127.0.0.1 at port 8080");
