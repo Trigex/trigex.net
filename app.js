@@ -1,8 +1,6 @@
 var express = require("express");
 var app = express();
 
-var wordlist = require("./wordlist.json");
-
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
@@ -38,10 +36,6 @@ app.get("/blog", function(req, res){
 // Admin page
 app.get("/admin", function(req, res){
     res.render("admin");
-});
-
-app.get("/wordlist", function(req, res){
-    res.json(wordlist);
 });
 
 // Start application
