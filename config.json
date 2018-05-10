@@ -1,0 +1,11 @@
+{
+    "app": {
+        "port": 3000,
+        "admin_password": "admin"
+    },
+    "site": {
+        "name": "Trigex",
+        "author": "Trigex",
+        "description": "Trigex's shitty homepage~"
+    }
+}

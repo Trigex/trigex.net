@@ -1,46 +1,9 @@
 <% include partials/header %>
+<% projects.forEach(function(project) { %>
 <div class="project">
-    <h1>Trigex.net</h1>
-    <p>The source of this website, uses express + ejs in NodeJS, it's pretty slick~</p>
-    <a href="https://github.com/Trigex/trigex.net">Repository</a>
-    <span class="js">NodeJS</span>
+    <h1><%= project.name %></h1>
+    <p><%= project.description %></p>
+    <a href="<%= project.url %>">Repository</a>
 </div>
-
-<div class="project">
-    <h1>AnimeGirlAPI</h1>
-    <p>Tiny 1 function API to get a random image of an anime girl, made for use on this site.</p>
-    <a href="https://github.com/Trigex/AnimeGirlAPI">Repository</a>
-    <span class="js">NodeJS</span>
-</div>
-
-<div class="project">
-    <h1>Textchan</h1>
-    <p>Textchan is a lightweight textboard script written in NodeJS, and uses express + ejs. It features
-    BBCode, greentexting, quoting, admin features and AJAX thread refresh.</p>
-    <a href="https://github.com/Trigex/Textchan">Repository</a>
-    <span class="js">NodeJS</span>
-</div>
-
-<div class="project">
-    <h1>Discord Countries Bot</h1>
-    <p>The bot that powers Discord Countries. Pretty nice.</p>
-    <a href="https://github.com/Zygimantass/discordcountriesbot">Repository</a>
-    <span class="js">NodeJS</span>
-</div>
-
-<div class="project">
-    <h1>Textchan (Old)</h1>
-    <p>Textchan (Old) was my first big PHP project. It was a lightweight textboard script,
-    aimed to be nice an simple, but also useful. The code base was pretty horrible though,
-    and it's being rewritten in nodejs.</p>
-    <a href="https://github.com/Trigex/Textchan-Old">Repository</a>
-    <span class="php">PHP</span>
-</div>
-
-<div class="project">
-    <h1>HTerm</h1>
-    <p>HTerm was a terminal for the now dead game Hacking Simulator 2017. It was pretty neat.</p>
-    <a href="https://github.com/Trigex/HTerm">Repository</a>
-    <span class="php">???</span>
-</div>
+<% }); %>
 <% include partials/footer %>
