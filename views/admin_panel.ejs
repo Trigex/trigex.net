@@ -1,0 +1,18 @@
+<% include partials/header %>
+<h1 class="text-center">Admin Panel</h1>
+<h3 class="text-center">Create blog post</h3>
+<form action="/blog/create/post" method="post" class="form">
+    <p>Title</p>
+    <input type="text" name="title">
+    <p>Content</p>
+    <textarea rows="8" name="content"></textarea>
+    </br>
+    <input type="submit" value="Submit">
+</form>
+<h3 class="text-center">Delete blog post</h3>
+<form action="/blog/delete/post" method="post" class="form">
+    <p>ID</p>
+    <input type="text" name="id">
+    <input type="submit" value="Submit">
+</form>
+<% include partials/footer %>

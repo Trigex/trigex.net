@@ -1,7 +1,16 @@
 {
     "app": {
         "port": 3000,
-        "admin_password": "admin"
+        "admin_password": "admin",
+        "session": {
+            "secret": "secret"
+        },
+        "mysql": {
+            "host": "localhost",
+            "user": "root",
+            "password": "root",
+            "database": "trigex"
+        }
     },
     "site": {
         "name": "Trigex",

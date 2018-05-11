@@ -95,3 +95,15 @@ img {
     width: 50%;
     display: block;
 }
+
+.form {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.post {
+    margin-left: 10px;
+    padding-left: 10px;
+    margin-right: 10px;
+    background: #424040;
+}
