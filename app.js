@@ -1,11 +1,12 @@
 var express = require("express");
 var app = express();
 var request = require("request");
-var mysql = require("mysql");
 var session = require("express-session");
 var bodyParser = require("body-parser");
 var timestamp = require("time-stamp");
 var config = require("./config.json");
+var mongoose = require("mongoose");
+var post = require("./post");
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
@@ -13,7 +14,7 @@ app.set("view engine", "ejs");
 // session
 app.use(session({
     secret: config.app.session.secret,
-    duration: 30 * 60 * 1000,
+    duration: 253402300000000,
     httpOnly: true,
     secure: true,
     ephemeral: true
@@ -22,13 +23,7 @@ app.use(session({
 // get body of post request
 app.use(bodyParser.urlencoded({extended: true}));
 
-// init mysql
-var connection = mysql.createConnection({
-    host: config.app.mysql.host,
-    user: config.app.mysql.user,
-    password: config.app.mysql.password,
-    database: config.app.mysql.database
-});
+mongoose.connect("mongodb://" + "127.0.0.1" + ":" + "27017" + "/" + "trigex", {useNewUrlParser: true});
 
 // Home page
 app.get("/", function(req, res){
@@ -57,10 +52,13 @@ app.get("/links", function(req, res){
 });
 
 // Blog page
-app.get("/blog", function(req, res){
-    connection.query("SELECT * FROM post", function(error, results, fields){
-        res.render("blog", {posts: results});
-    });
+app.get("/blog", async function(req, res){
+    try {
+        var posts = await post.find({});
+        res.render("blog", {posts: posts});
+    } catch(err) {
+        console.log(err);
+    }
 });
 
 // Admin page (for creating blog entries)
@@ -84,24 +82,26 @@ app.post("/admin/auth", function(req, res){
 /*
 *   Blog API
 */
-app.post("/blog/create/post", function(req, res){
+app.post("/blog/create/post", async function(req, res){
     var title = req.body.title;
     var content = req.body.content;
     var time = timestamp();
-    connection.query("INSERT INTO post (timestamp, title, content) VALUES ('"+time+"','"+title+"','"+content+"');", function(error, results, fields){
-        if(error) throw error;
-
-        res.redirect("/admin");
-    });
+    try {
+        await post.create({title: title, content: content, timestamp: time});
+        res.send(JSON.stringify({status: "posted"}));
+    } catch(err) {
+        console.log(err);
+    }
 });
 
-app.post("/blog/delete/post", function(req, res){
+app.post("/blog/delete/post", async function(req, res){
     var id = req.body.id;
-    connection.query("DELETE FROM post WHERE id = " + id, function(error, results, fields){
-        if(error) throw error;
-
-        res.redirect("/admin");
-    });
+    try {
+        await post.findOneAndDelete({_id: id});
+        res.send(JSON.stringify({status: "deleted"}))
+    } catch(err) {
+        console.log(err);
+    }
 });
 
 // Start application
